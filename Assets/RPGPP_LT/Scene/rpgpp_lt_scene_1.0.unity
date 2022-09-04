@@ -2908,7 +2908,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391468125}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: f85b09bb0bdebc440bdbacff846c67f7, type: 3}
   m_Controller: {fileID: 9100000, guid: 923311935cb069a46ab0ae1db4f79d7d, type: 2}
   m_CullingMode: 0
@@ -3725,6 +3725,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f85b09bb0bdebc440bdbacff846c67f7, type: 3}
       propertyPath: m_Name
       value: Mihanya
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f85b09bb0bdebc440bdbacff846c67f7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f85b09bb0bdebc440bdbacff846c67f7, type: 3}
@@ -5086,6 +5090,7 @@ MonoBehaviour:
   m_Camera: {fileID: 522811754}
   minRangeCamera: 60
   maxRangeCamera: 300
+  camSens: 5
 --- !u!1001 &676369073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10384,7 +10389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 818a324c5006b5e469d4d64d41f7648f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
+  camSens: 5
 --- !u!1 &1291687868
 GameObject:
   m_ObjectHideFlags: 0
@@ -14926,8 +14931,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 315.75446, y: 3.8007681, z: 388.6176}
-  m_Center: {x: 64.33432, y: 19.57, z: 37.55185}
+  m_Size: {x: 315.75446, y: 0.9723778, z: 388.6176}
+  m_Center: {x: 64.33432, y: 21.463343, z: 37.55185}
 --- !u!1001 &1772787827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16432,6 +16437,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4880192959135794, guid: e85c18dfba00c9540859ea847782af5b, type: 3}
   m_PrefabInstance: {fileID: 1958151936}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1962385785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1962385786}
+  m_Layer: 0
+  m_Name: PullBullet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1962385786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962385785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1964942915
 PrefabInstance:
   m_ObjectHideFlags: 0

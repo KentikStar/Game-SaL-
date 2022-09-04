@@ -144,3 +144,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d955f10fdefe3d41933b6c28109061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerList:
+  - Enemy
