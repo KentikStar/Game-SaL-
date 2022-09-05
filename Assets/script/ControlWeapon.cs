@@ -25,7 +25,11 @@ public class ControlWeapon : MonoBehaviour
     [SerializeField, Range(0f, 15f)]
     float camSens = 9f;
 
+    [SerializeField]
+    Animator animator;
+
     float _rotationX;
+
 
     private void Start()
     {
@@ -47,6 +51,8 @@ public class ControlWeapon : MonoBehaviour
             controlBullet controlBullet = bullet.GetComponent<controlBullet>();
             controlBullet.SpeedBullet = speedBullet;
             controlBullet.TargetBullet = getTarget();
+
+            animator.SetTrigger("isShot");
         }
 
         _rotationX -= Input.GetAxis("Mouse Y") * camSens;
@@ -54,51 +60,6 @@ public class ControlWeapon : MonoBehaviour
         float rotationY = transform.localEulerAngles.y;
         transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
     }
-
-    void FixedUpdate()
-    {
-
-        //lastMouse = Input.mousePosition - lastMouse;
-
-        //transform.eulerAngles = new Vector3(transform.eulerAngles.x - Input.GetAxis("Mouse Y") * camSens, transform.eulerAngles.y, 0);
-
-        /*if (checkValueRotate(transform.eulerAngles.x))
-        {
-            lastMouse = new Vector3(-lastMouse.y * camSens, lastMouse.x * camSens, 0);
-            lastMouse = new Vector3(transform.eulerAngles.x + lastMouse.x, transform.eulerAngles.y, 0);
-        }
-        else
-        {
-            lastMouse = new Vector3(-lastMouse.y * camSens * 3, lastMouse.x * camSens * 3, 0);
-            lastMouse = new Vector3(transform.eulerAngles.x - lastMouse.x, transform.eulerAngles.y, 0);
-        }*/
-
-        /*transform.eulerAngles = lastMouse;
-        lastMouse = Input.mousePosition;*/
-
-            
-    }
-
-    bool checkValueRotate(float value)
-    {
-        if (value > maxRangeCamera && value < 365)
-            return true;
-        if (value > -5 && value < minRangeCamera)
-            return true;
-
-        return false;
-    }
-
-    float ClampAngle(float angle)
-    {
-        //если угол прошел расстояние от 0 до -360 то обнуляем его 
-        if (angle < -360F) angle += 360F;
-        //если угол прошел расстояние от 0 до 360 то обнуляем его 
-        if (angle > 360F) angle -= 360F;
-        //рассчитываем среднее значение поворота относительно угла 
-        return Mathf.Clamp(angle, minRangeCamera, maxRangeCamera);
-    }
-
 
     Vector3 getTarget()
     {
