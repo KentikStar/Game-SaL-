@@ -5,7 +5,10 @@ using UnityEngine;
 public class ControlWeapon : MonoBehaviour
 {
     [SerializeField]
-    GameObject prefabBullet;
+    controlBullet prefabBullet;
+
+    [SerializeField]
+    SoundShot soundShotPrefab;
 
     [SerializeField]
     Transform startPosBullet;
@@ -28,12 +31,32 @@ public class ControlWeapon : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+    [SerializeField]
+    int poolCount = 3;
+
+    [SerializeField]
+    bool autoExpand;
+
     float _rotationX;
+    AudioSource audioSource;
+    PoolMono<controlBullet> poolBullet;
+    PoolMono<SoundShot> poolSound;
+    bool isShot = true;
 
 
     private void Start()
     {
         Cursor.visible = false;
+
+        GameObject parentBullet = new GameObject();
+        parentBullet.name = "parentBullet";
+        poolBullet = new PoolMono<controlBullet>(prefabBullet, poolCount, parentBullet.transform);
+        poolBullet.autoExpand = this.autoExpand;
+
+        GameObject parentSound = new GameObject();
+        parentSound.name = "parentSound";
+        poolSound = new PoolMono<SoundShot>(soundShotPrefab, poolCount, parentSound.transform);
+        poolSound.autoExpand = this.autoExpand;
     }
 
     Ray getRay()
@@ -47,14 +70,24 @@ public class ControlWeapon : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject bullet = Instantiate(prefabBullet, startPosBullet.position,startPosBullet.rotation).gameObject;
-            controlBullet controlBullet = bullet.GetComponent<controlBullet>();
-            controlBullet.SpeedBullet = speedBullet;
-            controlBullet.TargetBullet = getTarget();
+            if (isShot)
+            {
+                CreateBullet();
 
-            animator.SetTrigger("isShot");
+                animator.SetTrigger("isShot");
+
+                CreateSound();
+                isShot = false;
+                StartCoroutine(waitNextShot());
+            }
         }
 
+        RotateX();
+    }
+
+    //»—œ–¿¬»“‹ "-45"!!!!!!!!!!
+    private void RotateX()
+    {
         _rotationX -= Input.GetAxis("Mouse Y") * camSens;
         _rotationX = Mathf.Clamp(_rotationX, -45.0f, 45.0f);
         float rotationY = transform.localEulerAngles.y;
@@ -70,4 +103,26 @@ public class ControlWeapon : MonoBehaviour
 
         return raycastHit.point;
     }
+
+    private void CreateBullet()
+    {
+        controlBullet bullet = poolBullet.GetFreeElement();
+        bullet.transform.position = startPosBullet.position;
+        bullet.SetTarget(getTarget());
+        bullet.SpeedBullet = speedBullet;        
+    }
+
+    private void CreateSound()
+    {
+        SoundShot sound = poolSound.GetFreeElement();
+        sound.transform.position = startPosBullet.position;
+        sound.PlaySound();
+    }
+
+    IEnumerator waitNextShot()
+    {
+        yield return new WaitForSeconds(0.4f);
+        isShot = true;
+    }
+
 }
