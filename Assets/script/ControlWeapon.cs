@@ -13,11 +13,12 @@ public class ControlWeapon : MonoBehaviour
     [SerializeField]
     Transform startPosBullet;
 
-    [SerializeField, Range(0f, 10f)]
+    [SerializeField, Range(0f, 50f)]
     float speedBullet;
 
     [SerializeField]
     Camera m_Camera;
+
 
     [SerializeField, Range(0f, 60f)]
     float minRangeCamera;
@@ -37,8 +38,9 @@ public class ControlWeapon : MonoBehaviour
     [SerializeField]
     bool autoExpand;
 
+    
+
     float _rotationX;
-    AudioSource audioSource;
     PoolMono<controlBullet> poolBullet;
     PoolMono<SoundShot> poolSound;
     bool isShot = true;
@@ -57,12 +59,16 @@ public class ControlWeapon : MonoBehaviour
         parentSound.name = "parentSound";
         poolSound = new PoolMono<SoundShot>(soundShotPrefab, poolCount, parentSound.transform);
         poolSound.autoExpand = this.autoExpand;
+
+        
     }
 
     Ray getRay()
     {
         Vector3 Ray_start_position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         return m_Camera.ScreenPointToRay(Ray_start_position);
+
+        
     }
 
     // Update is called once per frame
@@ -109,7 +115,7 @@ public class ControlWeapon : MonoBehaviour
         controlBullet bullet = poolBullet.GetFreeElement();
         bullet.transform.position = startPosBullet.position;
         bullet.SetTarget(getTarget());
-        bullet.SpeedBullet = speedBullet;        
+        bullet.SpeedBullet = speedBullet;
     }
 
     private void CreateSound()

@@ -29,7 +29,7 @@ public class controlBullet : MonoBehaviour
     {
         if (triggerList.IndexOf(other.tag) != -1)        
             other.gameObject.SetActive(false);
-        
+
         transform.gameObject.SetActive(false);
     }
 
