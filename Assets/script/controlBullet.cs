@@ -21,7 +21,7 @@ public class controlBullet : MonoBehaviour
 
     // Добавить пул объекта пуля! и вермя жизни
     void FixedUpdate() 
-    { 
+    {        
         this.transform.Translate(Vector3.forward * SpeedBullet * Time.deltaTime, Space.Self);
     }
 
