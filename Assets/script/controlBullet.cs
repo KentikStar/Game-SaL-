@@ -19,7 +19,7 @@ public class controlBullet : MonoBehaviour
     }
 
 
-    // Добавить пул объекта пуля! и вермя жизни
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ! пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     void FixedUpdate() 
     {        
         this.transform.Translate(Vector3.forward * SpeedBullet * Time.deltaTime, Space.Self);
@@ -29,7 +29,7 @@ public class controlBullet : MonoBehaviour
     {
         if (triggerList.IndexOf(other.tag) != -1)        
             other.gameObject.SetActive(false);
-
+            
         transform.gameObject.SetActive(false);
     }
 

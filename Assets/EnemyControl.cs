@@ -7,7 +7,7 @@ public class EnemyControl : MonoBehaviour
     int countEnemy;
 
     [SerializeField]
-    int startCount = 5;
+    int spawnCount = 5;
     
     
     void Start()
@@ -16,12 +16,10 @@ public class EnemyControl : MonoBehaviour
         StartSpawn();
     }
 
-    void StartSpawn(){
-        for(int i = 0; i<startCount; i++){
+    public void StartSpawn(){
+        for(int i = 0; i<spawnCount; i++){
             SpawnEnemy();
         }
-
-        StartCoroutine(SpawnDelay());
     }
 
     GameObject GetFreeEnemy(){
@@ -37,15 +35,23 @@ public class EnemyControl : MonoBehaviour
         return enemy.gameObject;
     }
 
+    public void Reset(){
+        Enemy enemy;
+        for(int i = 0; i < countEnemy; i++){
+            enemy = transform.GetChild(i).GetComponent<Enemy>();
+            enemy.IsFree = true;
+        }
+    }
+
     void SpawnEnemy(){
         GameObject enemy = GetFreeEnemy();
         enemy.SetActive(true);
     }
 
     IEnumerator SpawnDelay(){
-        int count = countEnemy - startCount;
+        int count = countEnemy - spawnCount;
         for(int i = 0; i < count; i ++){
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(5f);
             SpawnEnemy();
         }       
     }

@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField]
+    EnemyControl enemyControl;
+
+    [SerializeField]
+    TextMeshProUGUI textKills;
+
+    private int killsCount;
+    public int KillsCount {
+        get{
+         return killsCount;}
+        set{
+        killsCount = value;
+        CheckValueKills();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void CheckValueKills(){
+        textKills.text = $"Kills: {killsCount}";
+
+        if(killsCount % 25 == 0)
+            enemyControl.Reset();
+
+        if(killsCount % 5 == 0)
+            enemyControl.StartSpawn();        
     }
 }

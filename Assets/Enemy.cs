@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{
-    public bool IsFree {get; set;} = true;
+{   
+    [SerializeField]
+    GameControl gameControl;
+     public bool IsFree {get; set;} = true;
+    private void OnDisable()
+    {
+        gameControl.KillsCount++;
+    }
 }
