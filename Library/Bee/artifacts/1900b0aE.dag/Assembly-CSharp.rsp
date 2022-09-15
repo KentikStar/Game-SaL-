@@ -352,9 +352,11 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/CameraControl.cs"
 "Assets/Enemy.cs"
 "Assets/EnemyControl.cs"
 "Assets/GameControl.cs"
+"Assets/MenuControl.cs"
 "Assets/Objects Import/JMO Assets/WarFX/Demo/Assets/CFX_AutoStopLoopedEffect.cs"
 "Assets/Objects Import/JMO Assets/WarFX/Demo/Assets/CFX_Demo_RandomDir.cs"
 "Assets/Objects Import/JMO Assets/WarFX/Demo/Assets/CFX_Demo_RotateCamera.cs"
@@ -378,6 +380,7 @@
 "Assets/script/PoolMono.cs"
 "Assets/script/RayPlus.cs"
 "Assets/script/SoundShot.cs"
+"Assets/UITarget.cs"
 -langversion:9.0
 
 /deterministic

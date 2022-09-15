@@ -41,6 +41,7 @@
      <Compile Include="Assets\script\characterRotate.cs" />
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Demo\Assets\WFX_Demo.cs" />
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Spawn System\CFX_SpawnSystem.cs" />
+     <Compile Include="Assets\MenuControl.cs" />
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
      <Compile Include="Assets\script\IKControl.cs" />
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Scripts\WFX_BulletHoleDecal.cs" />
@@ -59,9 +60,11 @@
      <Compile Include="Assets\GameControl.cs" />
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Demo\Assets\CFX_Demo_Translate.cs" />
      <Compile Include="Assets\Enemy.cs" />
+     <Compile Include="Assets\CameraControl.cs" />
      <Compile Include="Assets\script\ControlWeapon.cs" />
      <Compile Include="Assets\script\inheritanceTransform.cs" />
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Demo\Assets\WFX_Demo_New.cs" />
+     <Compile Include="Assets\UITarget.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Objects Import\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
