@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,18 +8,48 @@ using System.IO;
 
 public class SaveSerial : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+public void SaveGame(Settings settings)
+{
+    BinaryFormatter bf = new BinaryFormatter(); 
+    FileStream file = File.Create(Application.persistentDataPath 
+        + "/MySaveData.dat"); 
+    SaveData data = new SaveData();
+    data.VolumeSound = settings.VolumeSound;
+    data.MouseSens = settings.MouseSens;
+    bf.Serialize(file, data);
+    file.Close();
+    Debug.Log("Game data saved!");
 }
+
+public bool LoadGame(out Settings settings)
+{
+
+  if (File.Exists(Application.persistentDataPath 
+    + "/MySaveData.dat"))
+  {
+    BinaryFormatter bf = new BinaryFormatter();
+    FileStream file = 
+      File.Open(Application.persistentDataPath 
+      + "/MySaveData.dat", FileMode.Open);
+    SaveData data = (SaveData)bf.Deserialize(file);
+    file.Close();
+    settings = new Settings(data.VolumeSound,data.MouseSens);
+    Debug.Log("Game data loaded!");
+    
+    return true;    
+  }
+  else{
+    Debug.LogError("There is no save data!");
+    settings = new Settings(1,1);
+    return false;
+  }
+}
+
+}
+
+
 
 [Serializable]
 public class SaveData{

@@ -380,6 +380,7 @@
 "Assets/script/PoolMono.cs"
 "Assets/script/RayPlus.cs"
 "Assets/script/SaveSerial.cs"
+"Assets/script/SettingsContrl.cs"
 "Assets/script/SoundShot.cs"
 "Assets/script/UITarget.cs"
 -langversion:9.0

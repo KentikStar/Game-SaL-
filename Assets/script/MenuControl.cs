@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuControl : MonoBehaviour
 {
@@ -22,7 +23,10 @@ public class MenuControl : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         CurseFocus(true);
 
-    }    
+    }
+
+ 
+
 
     void CurseFocus(bool onAnimator)
     {

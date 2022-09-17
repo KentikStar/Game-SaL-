@@ -51,6 +51,7 @@
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Demo\Assets\WFX_Demo_Wall.cs" />
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Scripts\CFX_AutoDestructShuriken.cs" />
      <Compile Include="Assets\script\RayPlus.cs" />
+     <Compile Include="Assets\script\SaveSerial.cs" />
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Demo\Assets\WFX_Demo_DeleteAfterDelay.cs" />
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Demo\Assets\WFX_Demo_RandomDir.cs" />
@@ -65,7 +66,7 @@
      <Compile Include="Assets\script\ControlWeapon.cs" />
      <Compile Include="Assets\script\inheritanceTransform.cs" />
      <Compile Include="Assets\Objects Import\JMO Assets\WarFX\Demo\Assets\WFX_Demo_New.cs" />
-     <Compile Include="Assets\script\SaveSerial.cs" />
+     <Compile Include="Assets\script\SettingsContrl.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Objects Import\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

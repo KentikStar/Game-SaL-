@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 37091956}
   - component: {fileID: 37091955}
   - component: {fileID: 37091958}
+  - component: {fileID: 37091959}
   m_Layer: 5
   m_Name: Canvas_Settings
   m_TagString: Untagged
@@ -326,6 +327,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &37091959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37091953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d94bfee70acc44f87c27fecd0eaa99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderSound: {fileID: 1923515590}
+  sliderSens: {fileID: 256116291}
 --- !u!1 &61766511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,7 +1139,7 @@ GameObject:
   - component: {fileID: 256116290}
   - component: {fileID: 256116291}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SliderSens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1197,13 +1212,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 124354038}
   m_HandleRect: {fileID: 782541168}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 37091959}
+        m_TargetAssemblyTypeName: SettingsContrl, Assembly-CSharp
+        m_MethodName: ChangeSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &271187928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7932,7 +7959,7 @@ GameObject:
   - component: {fileID: 1923515589}
   - component: {fileID: 1923515590}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SliderSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8005,20 +8032,20 @@ MonoBehaviour:
   m_FillRect: {fileID: 1974604746}
   m_HandleRect: {fileID: 322142151}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 37091959}
+        m_TargetAssemblyTypeName: SettingsContrl, Assembly-CSharp
+        m_MethodName: ChangeSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
