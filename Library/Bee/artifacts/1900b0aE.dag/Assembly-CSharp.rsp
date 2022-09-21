@@ -374,15 +374,15 @@
 "Assets/script/EnemyControl.cs"
 "Assets/script/GameControl.cs"
 "Assets/script/IKControl.cs"
-"Assets/script/inheritanceTransform.cs"
 "Assets/script/MenuControl.cs"
-"Assets/script/moveWeapon.cs"
 "Assets/script/ParentSoundShot.cs"
 "Assets/script/PoolMono.cs"
-"Assets/script/RayPlus.cs"
+"Assets/script/RapprochementCamera.cs"
 "Assets/script/SaveSerial.cs"
 "Assets/script/SettingsContrl.cs"
 "Assets/script/SoundShot.cs"
+"Assets/script/Speaker.cs"
+"Assets/script/UIControl.cs"
 "Assets/script/UITarget.cs"
 -langversion:9.0
 

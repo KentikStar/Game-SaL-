@@ -23,6 +23,15 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    private static bool isPaused = false;
+
+    public static bool IsPaused{get{
+        return isPaused;        
+    }set{
+        isPaused = value;
+    }
+    }
+
     void Start()
     {
         LoadSettings();

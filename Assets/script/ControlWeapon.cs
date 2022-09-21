@@ -76,21 +76,24 @@ public class ControlWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (isShot)
+        if(!GameControl.IsPaused){
+        
+            if (Input.GetMouseButtonDown(0))
             {
-                CreateBullet();
+                if (isShot)
+                {
+                    CreateBullet();
 
-                animator.SetTrigger("isShot");
+                    animator.SetTrigger("isShot");
 
-                CreateSound();
-                isShot = false;
-                StartCoroutine(waitNextShot());
+                    CreateSound();
+                    isShot = false;
+                    StartCoroutine(waitNextShot());
+                }
             }
-        }
 
-        RotateX();
+            RotateX();
+        }
     }
 
 

@@ -18,7 +18,9 @@ public class characterRotate : MonoBehaviour
 
     private void Update()
     {
-        float rotationX = transform.localEulerAngles.x;
-        transform.Rotate(rotationX, Input.GetAxis("Mouse X") * camSensitivity, 0);
+        if(!GameControl.IsPaused){
+            float rotationX = transform.localEulerAngles.x;
+            transform.Rotate(rotationX, Input.GetAxis("Mouse X") * camSensitivity, 0);
+        }
     }
 }
