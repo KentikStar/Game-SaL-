@@ -11,6 +11,8 @@ public class GameControl : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI textKills;
 
+    public float MouseSens{get; set;}
+
     private int killsCount;
     public int KillsCount {
         get{
@@ -21,6 +23,11 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        LoadSettings();
+    }
+
     private void CheckValueKills(){
         textKills.text = $"Kills: {killsCount}";
 
@@ -29,5 +36,14 @@ public class GameControl : MonoBehaviour
 
         if(killsCount % 5 == 0)
             enemyControl.StartSpawn();        
+    }
+
+    void LoadSettings(){
+        Settings settings;
+        SaveSerial saveSerial = new SaveSerial();
+
+        saveSerial.LoadGame(out settings);
+
+        MouseSens = settings.MouseSens;
     }
 }

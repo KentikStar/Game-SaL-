@@ -20,14 +20,16 @@ public class ControlWeapon : MonoBehaviour
     Camera m_Camera;
 
 
-    [SerializeField, Range(0f, 60f)]
+    [SerializeField, Range(0f, 45f)]
     float minRangeCamera;
 
-    [SerializeField, Range(360f, 250f)]
+    [SerializeField, Range(-45f, 0f)]
     float maxRangeCamera;
 
-    [SerializeField, Range(0f, 15f)]
-    float camSens = 9f;
+
+    [SerializeField]
+    GameControl gameControl;
+    float camSensitivity;
 
     [SerializeField]
     Animator animator;
@@ -48,7 +50,7 @@ public class ControlWeapon : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = false;
+        camSensitivity = gameControl.MouseSens;
 
         GameObject parentBullet = new GameObject();
         parentBullet.name = "parentBullet";
@@ -56,10 +58,10 @@ public class ControlWeapon : MonoBehaviour
         poolBullet.autoExpand = this.autoExpand;
 
         GameObject parentSound = new GameObject();
-        parentSound.name = "parentSound";
+        parentSound.name = "parentSound";        
         poolSound = new PoolMono<SoundShot>(soundShotPrefab, poolCount, parentSound.transform);
         poolSound.autoExpand = this.autoExpand;
-
+        parentSound.AddComponent<ParentSoundShot>();
         
     }
 
@@ -91,15 +93,19 @@ public class ControlWeapon : MonoBehaviour
         RotateX();
     }
 
-    //��������� "-45"!!!!!!!!!!
+
+    //Поворот оружия по Х
+    //��������� "-45"!!!!!!!!!!
     private void RotateX()
     {
-        _rotationX -= Input.GetAxis("Mouse Y") * camSens;
-        _rotationX = Mathf.Clamp(_rotationX, -45.0f, 45.0f);
+        _rotationX -= Input.GetAxis("Mouse Y") * camSensitivity;
+        _rotationX = Mathf.Clamp(_rotationX, maxRangeCamera, minRangeCamera);
         float rotationY = transform.localEulerAngles.y;
         transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
     }
 
+
+    //Взять цель для направления пули
     Vector3 getTarget()
     {
 
@@ -110,6 +116,7 @@ public class ControlWeapon : MonoBehaviour
         return raycastHit.point;
     }
 
+    //Создание пули после выстрела
     private void CreateBullet()
     {
         controlBullet bullet = poolBullet.GetFreeElement();
@@ -118,6 +125,8 @@ public class ControlWeapon : MonoBehaviour
         bullet.SpeedBullet = speedBullet;
     }
 
+
+    //Создание звука выстрела
     private void CreateSound()
     {
         SoundShot sound = poolSound.GetFreeElement();
@@ -125,6 +134,8 @@ public class ControlWeapon : MonoBehaviour
         sound.PlaySound();
     }
 
+
+    //Задержка перед следующим выстрелом
     IEnumerator waitNextShot()
     {
         yield return new WaitForSeconds(0.4f);

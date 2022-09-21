@@ -377,6 +377,7 @@
 "Assets/script/inheritanceTransform.cs"
 "Assets/script/MenuControl.cs"
 "Assets/script/moveWeapon.cs"
+"Assets/script/ParentSoundShot.cs"
 "Assets/script/PoolMono.cs"
 "Assets/script/RayPlus.cs"
 "Assets/script/SaveSerial.cs"
