@@ -16,8 +16,14 @@ public class ControlWeapon : MonoBehaviour
     [SerializeField, Range(0f, 50f)]
     float speedBullet;
 
-    [SerializeField]
     Camera m_Camera;
+
+    [SerializeField]
+    float rapprochement = 25;
+    float defaultView;
+
+    float defaultSens;
+    float changeSens;
 
 
     [SerializeField, Range(0f, 45f)]
@@ -29,7 +35,6 @@ public class ControlWeapon : MonoBehaviour
 
     [SerializeField]
     GameControl gameControl;
-    float camSensitivity;
 
     [SerializeField]
     Animator animator;
@@ -50,7 +55,10 @@ public class ControlWeapon : MonoBehaviour
 
     private void Start()
     {
-        camSensitivity = gameControl.MouseSens;
+        m_Camera = Camera.main;
+        defaultView = m_Camera.fieldOfView;
+        defaultSens = gameControl.MouseSens;
+        changeSens = gameControl.MouseSens / 2;
 
         GameObject parentBullet = new GameObject();
         parentBullet.name = "parentBullet";
@@ -63,6 +71,19 @@ public class ControlWeapon : MonoBehaviour
         poolSound.autoExpand = this.autoExpand;
         parentSound.AddComponent<ParentSoundShot>();
         
+    }
+
+    void RepprochementCamera(){
+        if(!GameControl.IsPaused)
+            if(Input.GetMouseButton(1)){
+                m_Camera.fieldOfView = rapprochement;
+                gameControl.MouseSens = changeSens;
+            }                
+            else{
+                m_Camera.fieldOfView = defaultView;
+                gameControl.MouseSens = defaultSens;
+            }
+                
     }
 
     Ray getRay()
@@ -92,6 +113,8 @@ public class ControlWeapon : MonoBehaviour
                 }
             }
 
+            RepprochementCamera();
+
             RotateX();
         }
     }
@@ -101,7 +124,7 @@ public class ControlWeapon : MonoBehaviour
     //��������� "-45"!!!!!!!!!!
     private void RotateX()
     {
-        _rotationX -= Input.GetAxis("Mouse Y") * camSensitivity;
+        _rotationX -= Input.GetAxis("Mouse Y") * gameControl.MouseSens;
         _rotationX = Mathf.Clamp(_rotationX, maxRangeCamera, minRangeCamera);
         float rotationY = transform.localEulerAngles.y;
         transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);

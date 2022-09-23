@@ -13,6 +13,7 @@ public class EnemyControl : MonoBehaviour
     void Start()
     {        
         countEnemy = transform.childCount;
+        
         StartSpawn();
     }
 

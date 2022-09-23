@@ -12,6 +12,11 @@ public class UIControl : MonoBehaviour
     [SerializeField]
     string sceneName = "MainMenu";
 
+    void Start()
+    {
+        Cursor.visible = false;
+    }
+
 
     void Update()
     {
@@ -42,11 +47,13 @@ public class UIControl : MonoBehaviour
         animatorPause.SetBool("OpenMenu",true);
         Time.timeScale = 0;
         GameControl.IsPaused = true;
+        Cursor.visible = false;
     }
 
     void PauseOff(){
         animatorPause.SetBool("OpenMenu",false);
         Time.timeScale = 1;
         GameControl.IsPaused = false;
+        Cursor.visible = true;
     }
 }

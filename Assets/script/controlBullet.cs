@@ -23,6 +23,20 @@ public class controlBullet : MonoBehaviour
     void FixedUpdate() 
     {        
         this.transform.Translate(Vector3.forward * SpeedBullet * Time.deltaTime, Space.Self);
+
+        RayForward();
+    }
+
+    void RayForward(){
+        RaycastHit raycastHit;
+
+        Ray ray = new Ray(transform.position, Vector3.forward);
+        
+        if(Physics.Raycast(ray, out raycastHit,10))
+        {
+            OnTriggerEnter(raycastHit.collider);
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)

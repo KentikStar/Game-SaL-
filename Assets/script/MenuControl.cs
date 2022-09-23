@@ -46,7 +46,7 @@ public class MenuControl : MonoBehaviour
 
     void Select(GameObject target){
         UITarget uITarget = target.GetComponent<UITarget>();
-            switch(uITarget.Name)
+            switch(uITarget.NameUI)
             {
                 case "Settings":
                     animatorCamera.SetBool("Settings",true);

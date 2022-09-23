@@ -7,11 +7,11 @@ public class UITarget : MonoBehaviour
     Animator animator;
 
     [SerializeField]
-    string name;
-    public string Name {get{
-        return name;
+    string nameUI;
+    public string NameUI {get{
+        return nameUI;
     } set{
-        name = value;
+        nameUI = value;
     }}
 
     void Start()
