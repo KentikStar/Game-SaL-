@@ -1080,6 +1080,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 37091959}
+        m_TargetAssemblyTypeName: SettingsContrl, Assembly-CSharp
+        m_MethodName: ChangeSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &236601166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1218,19 +1230,7 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 37091959}
-        m_TargetAssemblyTypeName: SettingsContrl, Assembly-CSharp
-        m_MethodName: ChangeSettings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &271187928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1621,7 +1621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b37587dfc53404fbe54d5c684ad032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modeName: 
+  modeName: Time
 --- !u!95 &339619479
 Animator:
   serializedVersion: 4
@@ -5121,7 +5121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b37587dfc53404fbe54d5c684ad032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modeName: 
+  modeName: Infinity
 --- !u!61 &1061361593
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7109,11 +7109,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585820114}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b62d8674dd8f3146a760e8e48d57671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatorActive: {fileID: 1061361594}
+  settingsContrl: {fileID: 37091959}
 --- !u!1001 &1588711475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8903,19 +8905,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 37091959}
-        m_TargetAssemblyTypeName: SettingsContrl, Assembly-CSharp
-        m_MethodName: ChangeSettings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &1943610067
 PrefabInstance:
   m_ObjectHideFlags: 0

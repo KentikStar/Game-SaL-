@@ -7,18 +7,39 @@ public class Mode : MonoBehaviour
     [SerializeField]
     string modeName;
 
-    string ModeName{get; set;}
+    public string ModeName{get{
+        return modeName;
+    } set{
+        modeName = value;
+    }}
 
-    Animator animator;
+    GameMode gameMode;
 
-    // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        gameMode = GetComponentInParent<GameMode>();
+
+        ActiveAnimator();
     }
+
+    void ActiveAnimator(){
+        
+        Settings settings;
+        SaveSerial saveSerial = new SaveSerial();
+
+        saveSerial.LoadGame(out settings);
+
+        if(settings.Mode == ModeName){
+            
+            Animator animator = GetComponent<Animator>();
+            animator.SetBool("Checked",true);
+        }
+    }
+
+
 
     void OnMouseDown()
     {
-        animator.SetBool("Checked", true);
+        gameMode.ChangeAnimator(this);
     }
 }

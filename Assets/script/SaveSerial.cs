@@ -18,6 +18,7 @@ public void SaveGame(Settings settings)
     SaveData data = new SaveData();
     data.VolumeSound = settings.VolumeSound;
     data.MouseSens = settings.MouseSens;
+    data.Mode = settings.Mode;
     bf.Serialize(file, data);
     file.Close();
     Debug.Log("Game data saved!");
@@ -35,14 +36,14 @@ public bool LoadGame(out Settings settings)
       + "/MySaveData.dat", FileMode.Open);
     SaveData data = (SaveData)bf.Deserialize(file);
     file.Close();
-    settings = new Settings(data.VolumeSound,data.MouseSens);
+    settings = new Settings(data.VolumeSound,data.MouseSens,data.Mode);
     Debug.Log("Game data loaded!");
     
     return true;    
   }
   else{
     Debug.LogError("There is no save data!");
-    settings = new Settings(1,1);
+    settings = new Settings(1,1,"Infinity");
     return false;
   }
 }
@@ -55,4 +56,5 @@ public bool LoadGame(out Settings settings)
 public class SaveData{
     public float VolumeSound{get; set;}
     public float MouseSens{get; set;}
+    public string Mode{get; set;}
 }

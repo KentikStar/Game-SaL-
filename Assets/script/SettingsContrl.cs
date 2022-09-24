@@ -8,6 +8,8 @@ public class SettingsContrl : MonoBehaviour
     [SerializeField]
     Slider sliderSound, sliderSens;
 
+    public string ModeStr{get; set;}
+
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +17,7 @@ public class SettingsContrl : MonoBehaviour
         LoadSettings();
     }
 
-    void LoadSettings(){
+    public Settings LoadSettings(){
         Settings settings;
         SaveSerial saveSerial = new SaveSerial();
 
@@ -24,6 +26,10 @@ public class SettingsContrl : MonoBehaviour
         sliderSens.value = settings.MouseSens;
 
         sliderSound.value = settings.VolumeSound;
+
+        ModeStr = settings.Mode;
+
+        return settings;
 
     }
 
@@ -39,7 +45,7 @@ public class SettingsContrl : MonoBehaviour
         valueSens = sliderSens.value;
         valueSound = sliderSound.value;
 
-        Settings settings = new Settings(valueSound,valueSens);
+        Settings settings = new Settings(valueSound, valueSens, ModeStr);
 
         SaveSettings(settings);
     }
@@ -50,9 +56,11 @@ public class Settings{
 
     public float VolumeSound{get; set;}
     public float MouseSens{get; set;}
+    public string Mode{get; set;}
 
-    public Settings(float sound, float sens){
+    public Settings(float sound, float sens,string mode){
         VolumeSound = sound;
         MouseSens = sens;
+        Mode = mode;
     }
 }

@@ -15,23 +15,29 @@ public class GameMode : MonoBehaviour
 
     }}
 
+    [SerializeField]
+    Animator animatorActive;
+
+    [SerializeField]
+    SettingsContrl settingsContrl;
 
 
-    void ChangeAnimator(Mode mode){
-        Animator animator = mode.GetComponent<Animator>();
-        //animator.SetBool
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        NameMode = settingsContrl.ModeStr;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+
+    public void ChangeAnimator(Mode mode){
+        Animator animator = mode.GetComponent<Animator>();
         
+        animator.SetBool("Checked", true);
+        animatorActive.SetBool("Checked", false);
+
+        settingsContrl.ModeStr = mode.ModeName;
+        settingsContrl.ChangeSettings();
+
+        animatorActive = animator;
     }
 
 
