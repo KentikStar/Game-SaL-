@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
      public bool IsFree {get; set;} = true;
     private void OnDisable()
     {
-        gameControl.KillsCount++;
+        if(!GameControl.IsTimeOver)
+            gameControl.KillsCount++;
     }
 }

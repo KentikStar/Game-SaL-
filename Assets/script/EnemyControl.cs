@@ -41,6 +41,7 @@ public class EnemyControl : MonoBehaviour
         for(int i = 0; i < countEnemy; i++){
             enemy = transform.GetChild(i).GetComponent<Enemy>();
             enemy.IsFree = true;
+            enemy.gameObject.SetActive(false);
         }
     }
 

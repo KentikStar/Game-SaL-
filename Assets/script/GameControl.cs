@@ -11,6 +11,12 @@ public class GameControl : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI textKills;
 
+    [SerializeField]
+    Timer timer;
+
+    [SerializeField]
+    UIControl uIControl;
+
     public float MouseSens{get; set;}
 
     private int killsCount;
@@ -23,6 +29,15 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    private static bool isTimeOver = false;
+
+    public static bool IsTimeOver{get{
+        return isTimeOver;        
+    }set{
+        isTimeOver = value;
+    }
+    }
+
     private static bool isPaused = false;
 
     public static bool IsPaused{get{
@@ -31,10 +46,41 @@ public class GameControl : MonoBehaviour
         isPaused = value;
     }
     }
+    private string mode;
+
+    public string Mode{
+        get{
+            return mode;
+        }
+        set{
+            mode = value;            
+        }
+    }
+
+    
+    public void StartGame(){
+        timer.StartTimer();
+        uIControl.CloseMenuStart();
+        IsTimeOver = false;
+
+    }
+
+    public void EndGame(){
+        uIControl.PauseOn();
+        isTimeOver = true;  
+    }
+
+    public void RestartGame(){
+        KillsCount = 0;
+        uIControl.PauseOff();
+        uIControl.OpeneMenuStart();    
+    }
 
     void Start()
     {
         LoadSettings();
+
+        timer.VisibleTimer(Mode);
     }
 
     private void CheckValueKills(){
@@ -54,5 +100,7 @@ public class GameControl : MonoBehaviour
         saveSerial.LoadGame(out settings);
 
         MouseSens = settings.MouseSens;
+        Mode = settings.Mode;
+        Debug.Log("aaaaa"+settings.Mode);
     }
 }

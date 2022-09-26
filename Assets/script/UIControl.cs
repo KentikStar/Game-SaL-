@@ -15,6 +15,7 @@ public class UIControl : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
+        OpeneMenuStart();
     }
 
 
@@ -24,7 +25,7 @@ public class UIControl : MonoBehaviour
     }
 
     void Paused(){
-        if(Input.GetKeyDown(KeyCode.Escape)){
+        if(Input.GetKeyDown(KeyCode.Escape) && !GameControl.IsTimeOver){
             if(GameControl.IsPaused){
                 PauseOff();
             }
@@ -34,26 +35,38 @@ public class UIControl : MonoBehaviour
         }
     }
 
-    public void Restart(){
-        Debug.Log("LVL RESTART");
-    }
-
     public void ReturnMenu(){
         PauseOff();
         SceneManager.LoadSceneAsync(sceneName);
     }
 
-    void PauseOn(){
+    public void CloseMenuStart(){
+        animatorPause.SetBool("OpenMenuStart",false);
+        Time.timeScale = 1;
+        GameControl.IsPaused = false;
+        Cursor.visible = false;
+        GameControl.IsTimeOver = false;
+    }
+
+    public void OpeneMenuStart(){
+        animatorPause.SetBool("OpenMenuStart",true);
+        Time.timeScale = 0;
+        GameControl.IsPaused = true;
+        Cursor.visible = true;
+        GameControl.IsTimeOver = true;
+    }
+
+    public void PauseOn(){
         animatorPause.SetBool("OpenMenu",true);
         Time.timeScale = 0;
         GameControl.IsPaused = true;
-        Cursor.visible = false;
+        Cursor.visible = true;
     }
 
-    void PauseOff(){
+    public void PauseOff(){
         animatorPause.SetBool("OpenMenu",false);
         Time.timeScale = 1;
         GameControl.IsPaused = false;
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 }
