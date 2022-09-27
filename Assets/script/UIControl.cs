@@ -14,8 +14,8 @@ public class UIControl : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
-        OpeneMenuStart();
+
+        //OpeneMenuStart();
     }
 
 
@@ -37,34 +37,40 @@ public class UIControl : MonoBehaviour
 
     public void ReturnMenu(){
         PauseOff();
+        Cursor.visible = true;
         SceneManager.LoadSceneAsync(sceneName);
+        GameControl.IsTimeOver = false;
     }
 
     public void CloseMenuStart(){
         animatorPause.SetBool("OpenMenuStart",false);
-        Time.timeScale = 1;
-        GameControl.IsPaused = false;
-        Cursor.visible = false;
+        Play();
         GameControl.IsTimeOver = false;
     }
 
     public void OpeneMenuStart(){
         animatorPause.SetBool("OpenMenuStart",true);
-        Time.timeScale = 0;
-        GameControl.IsPaused = true;
-        Cursor.visible = true;
+        Pause();
         GameControl.IsTimeOver = true;
     }
 
     public void PauseOn(){
         animatorPause.SetBool("OpenMenu",true);
+        Pause();
+    }
+
+    public void PauseOff(){
+        animatorPause.SetBool("OpenMenu",false);
+        Play();
+    }
+
+    private void Pause(){
         Time.timeScale = 0;
         GameControl.IsPaused = true;
         Cursor.visible = true;
     }
 
-    public void PauseOff(){
-        animatorPause.SetBool("OpenMenu",false);
+    private void Play(){
         Time.timeScale = 1;
         GameControl.IsPaused = false;
         Cursor.visible = false;

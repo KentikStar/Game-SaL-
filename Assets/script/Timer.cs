@@ -15,27 +15,39 @@ public class Timer : MonoBehaviour
 
     int seconds = 30;
 
-    public void VisibleTimer(string mode)
-    {
-        if(mode != "Time")
-            this.gameObject.SetActive(false);
-    }
+    Coroutine co;
 
     public void SaveSeconds(Slider slider){
         seconds = Convert.ToInt32(slider.value);
+    }
+
+    public void StartStopwatch(){
+        co = StartCoroutine(Stopwatch());
+    }
+
+    public void StopStopwatch(){
+        StopCoroutine(co);
     }
     
     public void StartTimer(){
         StartCoroutine(TimerSecond(seconds));
     }
 
-    IEnumerator TimerSecond(int seconds){
+    IEnumerator TimerSecond(int sec){
 
-        for(int i = seconds; i >= 0; i--){
+        for(int i = sec; i >= 0; i--){
             yield return new WaitForSeconds(1);
             ChangeTimer(i);
         }
         gameControl.EndGame();
+    }
+
+    IEnumerator Stopwatch(){
+        int sec = 0;
+        while(true){            
+            yield return new WaitForSeconds(1);
+            ChangeTimer(sec++);
+        }
     }
 
     

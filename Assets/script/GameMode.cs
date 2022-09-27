@@ -25,6 +25,20 @@ public class GameMode : MonoBehaviour
     void Start()
     {
         NameMode = settingsContrl.ModeStr;
+        Debug.Log(NameMode);
+        StartAcitveMode();
+    }
+
+    private void StartAcitveMode(){
+        Mode modeChild;
+        for(int i = 0; i < transform.childCount; i++){
+            modeChild = transform.GetChild(i).GetComponentInChildren<Mode>();
+            if(NameMode == modeChild.ModeName){
+                animatorActive = modeChild.GetComponent<Animator>();
+                Debug.Log("animator edit");
+                
+            }
+        }
     }
 
 

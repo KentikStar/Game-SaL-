@@ -24,8 +24,8 @@ public class GameControl : MonoBehaviour
         get{
          return killsCount;}
         set{
-        killsCount = value;
-        CheckValueKills();
+            killsCount = value;
+            CheckValueKills();
         }
     }
 
@@ -71,16 +71,28 @@ public class GameControl : MonoBehaviour
     }
 
     public void RestartGame(){
+        IsTimeOver = true;
         KillsCount = 0;
-        uIControl.PauseOff();
-        uIControl.OpeneMenuStart();    
+        IsTimeOver = false;
+        if(Mode == "Time"){
+            uIControl.PauseOff();
+            uIControl.OpeneMenuStart();
+        }
+        else{
+            timer.StopStopwatch();
+            timer.StartStopwatch();
+            uIControl.PauseOff();
+        }
     }
 
     void Start()
     {
         LoadSettings();
 
-        timer.VisibleTimer(Mode);
+        if(Mode == "Time")
+            uIControl.OpeneMenuStart();
+        else
+            timer.StartStopwatch();
     }
 
     private void CheckValueKills(){
